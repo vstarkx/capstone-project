@@ -91,6 +91,18 @@ capstone-redis-1  | 1:M 22 Oct 2024 10:44:06.944 * Ready to accept connections t
        - Use the official `mysql` image.
    - Environment Variables:
        - Ensure that the Flask application can access Redis and MySQL using environment variables.
+    
+#### 3. **Infrastructure as Code Using Terraform**:
+   - Write a Terraform file to create an infrastructure on Alibaba Cloud that meets the following requirements:
+     - **Redis Server**: Redis server in the private vSwitch which accepts connections from Http Servers.
+     - **MySQL Server**: MySQL server in the private vSwitch which accepts connections from Http Servers.
+     - **Http Servers**: a total of 2 Http servers in the private vSwitch.
+     - **Load Balancer**: a Network Load Balancer which distribute traffic to the http server group.
+     - **Runner Server**: a bastion/runner server which can be used to ssh to the servers in the private vSwitches. and can be used as a self-hosted runner later in the GitHub Actions Workflows.
+     - **Nat Gateway**: NatGatway server that allow servers in the private vSwitch to access the internet.
+       
+The following sketch demonstrates the infrastructure design:
 
 
+![capstone](https://github.com/user-attachments/assets/0bbcee9b-ec80-4c9b-a938-e978d0d467bf)
 
