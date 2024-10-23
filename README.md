@@ -10,6 +10,9 @@ This Flask application serves as a simple web interface for adding users and vie
     - A `/user/<user_id>` route for fetching user information, first checking Redis (cache) and then falling back to MySQL if the data isn't found in the cache.
   - It also contains a function to initialize the MySQL database table for users.
 
+- **requirements.txt**: 
+  - This file lists the necessary Python packages for the Flask application.
+
 - **test_app.py**: 
   - Contains unit test to verify that the Flask application is working correctly.
   - Tests the home page route (`/`) to ensure it returns a successful response.
@@ -22,6 +25,7 @@ This Flask application serves as a simple web interface for adding users and vie
 - **templates/user.html**: 
   - The user information HTML template.
   - Displays the user’s ID, name, and the source (either Redis or MySQL) where the information was retrieved from.
+    
 
 This application demonstrates basic operations with integration between a relational database (MySQL) and an in-memory store (Redis) for faster data retrieval. Bellow is a screenshoot of the Homepage, I'll add new user:
 
@@ -100,9 +104,57 @@ capstone-redis-1  | 1:M 22 Oct 2024 10:44:06.944 * Ready to accept connections t
      - **Load Balancer**: a Network Load Balancer which distribute traffic to the http server group.
      - **Runner Server**: a bastion/runner server which can be used to ssh to the servers in the private vSwitches. and can be used as a self-hosted runner later in the GitHub Actions Workflows.
      - **Nat Gateway**: NatGatway server that allow servers in the private vSwitch to access the internet.
+     - **Outputs**: Outputs of neccessary values, such as: Load Balancer domain name, Bastion/Runner server public ip, Http servers private ip, MySQL server private ip and Redis server private ip.
        
 The following sketch demonstrates the infrastructure design:
 
 
 ![capstone](https://github.com/user-attachments/assets/0bbcee9b-ec80-4c9b-a938-e978d0d467bf)
+
+#### 4. **CI/CD Pipeline using GitHub Actions**: 
+- Write a workflow that triggers on **Push** to test the app, build the Docker image, and push it to a public repository in your Docker Hub account. [TAKE A SCREENSHOT 01]
+- The same workflow should trigger on a **Pull Request** to the **main** branch to test the app. [TAKE A SCREENSHOT 02]
+- See the screenshots below:
+
+<img width="765" alt="Screen Shot 1446-04-20 at 12 04 00 AM" src="https://github.com/user-attachments/assets/fd092720-c366-48e2-9343-4226a4c69cbc">
+
+
+<img width="657" alt="Screen Shot 1446-04-20 at 1 15 44 PM" src="https://github.com/user-attachments/assets/6c2c4b7e-1ad5-43f9-b7c4-55e2b9cc2759">
+
+- Write another workflow that triggers on **Push** to the **main** branch to pull the Docker image from your public repository and deploy it to the HTTP servers. [TAKE A SCREENSHOT 03]
+
+  <img width="442" alt="Screen Shot 1446-04-20 at 12 20 22 AM" src="https://github.com/user-attachments/assets/6080d672-b7d3-43ba-bf52-fc8d3541905f">
+
+#### 5. Functional Application
+
+- Take a screenshot of a functional application accessed through the load balancer [TAKE A SCREENSHOT 04]
+
+  <img width="699" alt="Screen Shot 1446-04-20 at 2 35 26 PM" src="https://github.com/user-attachments/assets/8ebcbd74-0988-4bc0-8d8d-1cde957e059b">
+
+
+#### 6. **Directory Structure**:
+
+The final project files structure should be something similar to the following:
+```
+📦capstone
+ ┣ 📂.github
+ ┃ ┗ 📂workflows
+ ┃ ┃ ┣ 📜cd.yml
+ ┃ ┃ ┗ 📜ci.yml
+ ┣ 📂templates
+ ┃ ┣ 📜index.html
+ ┃ ┗ 📜user.html
+ ┣ 📜.gitignore
+ ┣ 📜Dockerfile
+ ┣ 📜compose.yml
+ ┣ 📜app.py
+ ┣ 📜test_app.py
+ ┣ 📜requirements.txt
+ ┣ 📂screenshots
+ ┃ ┣ 📜SCREENSHOT01.PNG
+ ┃ ┣ 📜SCREENSHOT02.PNG 
+ ┃ ┣ 📜SCREENSHOT03.PNG
+ ┃ ┗ 📜SCREENSHOT04.PNG
+ ┗ 📜README.md
+```
 
