@@ -96,22 +96,8 @@ capstone-redis-1  | 1:M 22 Oct 2024 10:44:06.944 * Ready to accept connections t
    - Environment Variables:
        - Ensure that the Flask application can access Redis and MySQL using environment variables.
     
-#### 3. **Infrastructure as Code Using Terraform**:
-   - Write a Terraform file to create an infrastructure on Alibaba Cloud that meets the following requirements:
-     - **Redis Server**: Redis server in the private vSwitch which accepts connections from Http Servers.
-     - **MySQL Server**: MySQL server in the private vSwitch which accepts connections from Http Servers.
-     - **Http Servers**: a total of 2 Http servers in the private vSwitch.
-     - **Load Balancer**: a Network Load Balancer which distribute traffic to the http server group.
-     - **Runner Server**: a bastion/runner server which can be used to ssh to the servers in the private vSwitches. and can be used as a self-hosted runner later in the GitHub Actions Workflows.
-     - **Nat Gateway**: NatGatway server that allow servers in the private vSwitch to access the internet.
-     - **Outputs**: Outputs of neccessary values, such as: Load Balancer domain name, Bastion/Runner server public ip, Http servers private ip, MySQL server private ip and Redis server private ip.
-       
-The following sketch demonstrates the infrastructure design:
 
-
-![capstone](https://github.com/user-attachments/assets/0bbcee9b-ec80-4c9b-a938-e978d0d467bf)
-
-#### 4. **CI/CD Pipeline using GitHub Actions**: 
+#### 3. **CI/CD Pipeline using GitHub Actions**: 
 - Write a workflow that triggers on **Push** to test the app, build the Docker image, and push it to a public repository in your Docker Hub account. [TAKE A SCREENSHOT 01]
 - The same workflow should trigger on a **Pull Request** to the **main** branch to test the app. [TAKE A SCREENSHOT 02]
 - See the screenshots below:
@@ -125,6 +111,22 @@ The following sketch demonstrates the infrastructure design:
 
   <img width="442" alt="Screen Shot 1446-04-20 at 12 20 22 AM" src="https://github.com/user-attachments/assets/6080d672-b7d3-43ba-bf52-fc8d3541905f">
 
+
+#### 4. **Infrastructure as Code Using Terraform**:
+   - Create another GitHub Repository and Write a Terraform file to create an infrastructure on Alibaba Cloud that meets the following requirements:
+     - **Redis Server**: Redis server in the private vSwitch which accepts connections from Http Servers.
+     - **MySQL Server**: MySQL server in the private vSwitch which accepts connections from Http Servers.
+     - **Http Servers**: a total of 2 Http servers in the private vSwitch.
+     - **Load Balancer**: a Network Load Balancer which distribute traffic to the http server group.
+     - **Runner Server**: a bastion/runner server which can be used to ssh to the servers in the private vSwitches. and can be used as a self-hosted runner later in the GitHub Actions Workflows.
+     - **Nat Gateway**: NatGatway server that allow servers in the private vSwitch to access the internet.
+     - **Outputs**: Outputs of neccessary values, such as: Load Balancer domain name, Bastion/Runner server public ip, Http servers private ip, MySQL server private ip and Redis server private ip.
+       
+The following sketch demonstrates the infrastructure design:
+
+
+![capstone](https://github.com/user-attachments/assets/0bbcee9b-ec80-4c9b-a938-e978d0d467bf)
+
 #### 5. Functional Application
 
 - Take a screenshot of a functional application accessed through the load balancer [TAKE A SCREENSHOT 04]
@@ -132,9 +134,9 @@ The following sketch demonstrates the infrastructure design:
   <img width="699" alt="Screen Shot 1446-04-20 at 2 35 26 PM" src="https://github.com/user-attachments/assets/8ebcbd74-0988-4bc0-8d8d-1cde957e059b">
 
 
-#### 6. **Directory Structure**:
+#### 6. **Application Directory Structure**:
 
-The final project files structure should be something similar to the following:
+The final application directory files structure should be something similar to the following:
 ```
 📦capstone
  ┣ 📂.github
@@ -157,4 +159,13 @@ The final project files structure should be something similar to the following:
  ┃ ┗ 📜SCREENSHOT04.PNG
  ┗ 📜README.md
 ```
+
+#### 7. Submission:
+
+Submit your Repositories URLs:
+1. Application Repository.
+2. Infrastructure Repository.
+
+## Bonus Section:
+   - Write a Terraform file to deploy the application on AWS Cloud.
 
