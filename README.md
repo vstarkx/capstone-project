@@ -27,7 +27,7 @@ This Flask application serves as a simple web interface for adding users and vie
   - Displays the user’s ID, name, and the source (either Redis or MySQL) where the information was retrieved from.
     
 
-This application demonstrates basic operations with integration between a relational database (MySQL) and an in-memory store (Redis) for faster data retrieval. Bellow is a screenshoot of the Homepage, I'll add new user:
+This application demonstrates basic operations with integration between a relational database (MySQL) and an in-memory store (Redis) for faster data retrieval. Bellow is a screenshoot of the Homepage, I'll add a new user:
 
 
 <img width="659" alt="Screen Shot 1446-04-19 at 1 35 19 PM" src="https://github.com/user-attachments/assets/2eb60bbb-0b2a-4d43-aa07-8a2b648032db">
@@ -160,12 +160,14 @@ The final application directory files structure should be something similar to t
  ┗ 📜README.md
 ```
 
-#### 7. Submission:
+#### 7. Submission
+To complete your project submission, please provide the URLs for the following repositories:
 
-Submit your Repositories URLs:
-1. Application Repository.
-2. Infrastructure Repository.
+1. **Application Repository URL**: Contains all files related to the Flask application, such as `app.py`, `templates`, `Dockerfile`, and GitHub Actions workflows. It should also include all required screenshots in the `screenshots` folder as proof of the application’s functionality.
 
-## Bonus Section:
-   - Write a Terraform file to deploy the application on AWS Cloud.
+2. **Infrastructure Repository URL**: Contains Terraform configuration files for setting up the infrastructure on Alibaba Cloud. This should include all necessary configuration files to provision the Redis, MySQL, and HTTP servers, along with the load balancer, NAT gateway, and any other components.
+
+
+### Bonus Section
+Create an additional Terraform file to deploy the application on AWS Cloud.
 
