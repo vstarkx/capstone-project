@@ -40,6 +40,6 @@ jobs:
               DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           run: | 
                 ssh -i ~/.ssh/ssh_key root@${{ matrix.servers }} "
-                    docker pull $DOCKER_USERNAME/copstone-project:tagname && 
+                    docker pull ${{ secrets.DOCKER_USERNAME }}/copstone-project:tagname && 
                     docker compose up -d &&
                     docker image rm \$(docker image ls --filter dangling=true -q)"
