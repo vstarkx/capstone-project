@@ -35,4 +35,4 @@ jobs:
           run: |
                 # Replace with your actual deployment commands
                 ssh root@10.0.3.138 "docker pull ${{ secrets.DOCKER_USERNAME }}/copstone-project:tagname && docker compose up -d"
-                ssh user@10.0.3.137 "docker pull ${{ secrets.DOCKER_USERNAME }}/copstone-project:tagname && docker compose up -d"
+                ssh root@10.0.3.137 "docker pull ${{ secrets.DOCKER_USERNAME }}/copstone-project:tagname && docker compose up -d"
