@@ -38,7 +38,7 @@ jobs:
           env: 
               SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
               DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          run: |
+          run: | 
                 ssh-keyscan -H ${{ matrix.servers }} >> ~/.ssh/known_hosts
                 echo "$SSH_PRIVATE_KEY" > ~/.ssh/ssh_key
                 chmod 600 ~/.ssh/ssh_key
