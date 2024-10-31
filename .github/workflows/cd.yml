@@ -39,7 +39,8 @@ jobs:
               SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
               DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           run: | 
-                ssh -i ~/.ssh/ssh_key root@${{ matrix.servers }} "
-                    docker pull muhammed728/copstone-project && 
-                    docker compose up -d &&
-                    docker image rm \$(docker image ls --filter dangling=true -q)"
+               ssh -i ~/.ssh/ssh_key root@${{ matrix.servers }} "
+                docker pull muhammed728/copstone-project &&
+                docker compose -f docker-compose.yml up -d &&
+                docker image rm \$(docker image ls --filter dangling=true -q)"
+
