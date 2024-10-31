@@ -27,7 +27,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/copstone-project:tagname
 
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
     runs-on: self-hosted
     needs: build-and-push 
     strategy:
