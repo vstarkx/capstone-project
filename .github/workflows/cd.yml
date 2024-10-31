@@ -35,7 +35,7 @@ jobs:
             servers: [ "10.0.3.137", "10.0.3.138"]
     steps:
         - name: Deploying Docker image to ${{ matrix.servers }}
-          env:
+          env: 
               SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
               DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           run: |
